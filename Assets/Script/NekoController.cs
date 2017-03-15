@@ -23,7 +23,6 @@ public class NekoController : MonoBehaviour
         {
             myRigibody.AddForce(transform.up * NekoJumpForce);
         }
-
         
 //   if(!grounded && myRigibody.velocity.y == 0)
 //    {
@@ -34,6 +33,15 @@ public class NekoController : MonoBehaviour
 //       myRigibody.AddForce(transform.up * NekoJumpForce);
 //      grounded = false;
 // }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        
     }
 }
    
